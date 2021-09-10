@@ -1,0 +1,7 @@
+<%layout('layouts/boilerplate')-%>
+<div class="alert alert-danger col-6 offset-3" role="alert">
+    <h4>Error Code <%= err.statusCode %> </h4>
+    <%= err.message %> 
+    <hr>
+    <p><%= err.stack %> </p>
+</div>

@@ -1,0 +1,66 @@
+<% layout('layouts/boilerplate') -%>
+    <div class="container-fluid">
+        <div class="d-flex flex-column">
+            <h1 class="text-center mb-5">New Campground</h1>
+            <form class="mx-5 validation-form" action="/campgrounds" method="POST" enctype="multipart/form-data" novalidate>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Camp Title</label>
+                    <input type="text" class="form-control" name="campground[title]" id="title" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Camp location</label>
+                    <input type="text" class="form-control" name="campground[location]" id="location" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+                <input type="file" name="image" id="image" multiple>
+                <!-- <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="text" class="form-control" name="campground[image]" id="image" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div> -->
+                <label for="price" class="form-label">Campground Price</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="text" placeholder="0.00" class="form-control" name="campground[price]" id="price" aria-label="Amount (to the nearest dollar)" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea type="text" class="form-control" name="campground[description]" id="description" required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+                <button type="submit" class="btn btn-success">Add Campground</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+  'use strict'
+  const forms = document.querySelectorAll('.validation-form')
+
+  // Loop over them and prevent submission
+  Array.from(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+    </script>
